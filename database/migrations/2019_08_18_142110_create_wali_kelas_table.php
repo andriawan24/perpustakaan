@@ -16,7 +16,7 @@ class CreateWaliKelasTable extends Migration
         Schema::create('wali_kelas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nip', 30);
-            $table->string('name', 50);
+            $table->string('nama', 50);
             $table->text('alamat');
             $table->string('no_tlp');
             $table->string('email', 50);
