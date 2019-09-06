@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\WaliKelas;
+use App\Anggota;
 
-class WaliKelasTableSeeder extends Seeder
+class AnggotaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +15,13 @@ class WaliKelasTableSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i=0; $i <= 10; $i++) { 
-            WaliKelas::create([
-                'nip' => $faker->randomDigit,
+        for ($i=0; $i < 10; $i++) { 
+            Anggota::create([
                 'nama' => $faker->name,
-                'alamat' => $faker->address(),
+                'id_kelas' => $faker->numberBetween(1, 6),
+                'alamat' => $faker->address,
                 'no_tlp' => $faker->phoneNumber,
+                'tlp_ortu' => $faker->phoneNumber,
                 'email' => $faker->email
             ]);
         }

@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BukuTableSeeder::class);
         $this->call(WaliKelasTableSeeder::class);
         $this->call(KetuaMuridTableSeeder::class);
+        // $this->call(AnggotaTableSeeder::class);
     }
 }

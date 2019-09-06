@@ -19,8 +19,8 @@ class CreateAnggotasTable extends Migration
             $table->bigInteger('id_kelas')->unsigned();
             $table->foreign('id_kelas')->references('id')->on('kelas')->onDelete('cascade');
             $table->text('alamat');
-            $table->string('no_tlp', 15);
-            $table->string('tlp_orangtua', 15);
+            $table->string('no_tlp', 20);
+            $table->string('tlp_ortu', 20);
             $table->string('email', 50);
             $table->timestamps();
         });
