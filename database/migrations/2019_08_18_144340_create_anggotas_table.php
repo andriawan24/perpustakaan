@@ -22,6 +22,7 @@ class CreateAnggotasTable extends Migration
             $table->string('no_tlp', 20);
             $table->string('tlp_ortu', 20);
             $table->string('email', 50);
+            $table->string('password');
             $table->timestamps();
         });
     }
