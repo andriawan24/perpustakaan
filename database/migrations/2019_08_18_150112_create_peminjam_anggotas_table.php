@@ -23,7 +23,8 @@ class CreatePeminjamAnggotasTable extends Migration
             $table->date('tanggal_kembali');
             $table->integer('jumlah');
             $table->enum('status', ['pinjam', 'kembali']);
-            $table->string('ket')->nullable();
+            $table->date('dikembalikan_pada')->nullable();
+            $table->integer('denda')->default(0);
         });
     }
 

@@ -13,9 +13,9 @@ class CreatePeminjamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('peminjam', function (Blueprint $table) {
+        Schema::create('peminjam_kelas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('tanggal');
+            $table->datetime('tanggal');
             $table->bigInteger('id_kelas')->unsigned();
             $table->foreign('id_kelas')->references('id')->on('kelas')->onDelete('cascade');
             $table->bigInteger('id_buku')->unsigned();
