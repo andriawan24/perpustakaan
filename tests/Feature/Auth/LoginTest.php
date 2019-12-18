@@ -45,7 +45,7 @@ class LoginTest extends TestCase
 
         $response = $this->actingAs($user)->get($this->loginGetRoute());
 
-        $response->assertRedirect($this->successfulLoginRoute());
+        $response->assertRedirect(url('/'));
     }
 
     public function test_login_with_valid_credentials()

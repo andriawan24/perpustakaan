@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 use App\Anggota;
+use Illuminate\Support\Facades\Hash;
 
 class AnggotaTableSeeder extends Seeder
 {
@@ -13,17 +13,14 @@ class AnggotaTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
-
-        for ($i=0; $i < 10; $i++) { 
-            Anggota::create([
-                'nama' => $faker->name,
-                'id_kelas' => $faker->numberBetween(1, 6),
-                'alamat' => $faker->address,
-                'no_tlp' => $faker->phoneNumber,
-                'tlp_ortu' => $faker->phoneNumber,
-                'email' => $faker->email
-            ]);
-        }
+        Anggota::create([
+            'nama' => "Naufal Fawwaz Andriawan",
+            'id_kelas' => 1,
+            'alamat' => "Jl. Sawahlega no. 35 RT02 RW06",
+            'no_tlp' => "087787871366",
+            'tlp_ortu' => "08156087878",
+            'email' => "fawaznaufal32@gmail.com",
+            "password" => Hash::make("andriawan24")
+        ]);
     }
 }

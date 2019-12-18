@@ -63,6 +63,5 @@ class BukuTest extends TestCase
             'cover' => 'default.jpg'
         ]);
     }
-
     
 }

@@ -23,6 +23,7 @@ class CreateAnggotasTable extends Migration
             $table->string('tlp_ortu', 20);
             $table->string('email', 50);
             $table->string('password');
+            $table->integer("jumlah_kunjungan")->default(0);
             $table->timestamps();
         });
     }
