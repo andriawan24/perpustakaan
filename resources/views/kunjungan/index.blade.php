@@ -202,7 +202,7 @@
       $form_login.addClass('is-selected');
       $form_signup.removeClass('is-selected');
       $form_forgot_password.removeClass('is-selected');
-      $tab_login.addClass('selected');
+      $tab_login.removeAttr('selected');
       $tab_signup.removeClass('selected');
     }
   
