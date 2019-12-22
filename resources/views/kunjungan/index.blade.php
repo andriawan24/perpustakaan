@@ -65,7 +65,21 @@
 
                 <p class="fieldset">
                     <label class="image-replace" for="signin-username">Alamat</label>
+                    <select name="jk" autocomplete="off" style="width: 100%" required class="full-width has-padding has-border">
+                      <option value="#">Jenis Kelamin : </option>
+                      <option value="0">Perempuan</option>
+                      <option value="1">Laki-laki</option>
+                  </select>
+                </p>
+
+                <p class="fieldset">
+                    <label class="image-replace" for="signin-username">Alamat</label>
                     <input class="full-width has-padding has-border" id="signin-username" type="text" name="address" autocomplete="off" placeholder="Alamat" autofocus required>
+                </p>
+                
+                <p class="fieldset">
+                    <label class="image-replace email" for="signin-username">Email</label>
+                    <input class="full-width has-padding has-border" id="signin-username" type="email" name="email" autocomplete="off" placeholder="Email" autofocus required>
                 </p>
                 
                 <p class="fieldset">

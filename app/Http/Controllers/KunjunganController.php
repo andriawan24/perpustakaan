@@ -43,12 +43,16 @@ class KunjunganController extends Controller
         // $this->validate($request, [
         //     "name" => "required|string",
         //     "address" => "required|string",
-        //     "phone_number" => "required|numeric|min:11"
+        //     "jk" => "required|integer",
+        //     "phone_number" => "required|numeric|min:11",
+        //     "email" => "required|numeric|min:11",
         // ]);
 
         $nama = $request->input("name");
         $kelas = $request->input("class");
         $alamat = $request->input("address");
+        $jk = $request->input("jk");
+        $email = $request->input("email");
         $no_tlp = $request->input("phone_number");
 
         KunjunganMurid::create([
@@ -56,6 +60,8 @@ class KunjunganController extends Controller
             "id_kelas" => $kelas,
             "no_tlp" => $no_tlp,
             "alamat" => $alamat,
+            "jk" => $jk,
+            "email" => $email,
         ]);
 
         return redirect('/kunjungan')->with("success", "Berhasil Mengisi Kehadiran");
@@ -71,7 +77,13 @@ class KunjunganController extends Controller
             
             if(Hash::check($pass, $user->password)) {
                 KunjunganAnggota::create([
-                    "id_anggota" => $user->id
+                    "nama" => $user->nama,
+                    "id_kelas" => $user->id_kelas,
+                    "no_tlp" => $user->no_tlp,
+                    "alamat" => $user->alamat,
+                    "jk" => $user->jk,
+                    "email" => $user->email,
+                    "is_anggota" => 1,
                 ]);
                 
                 return redirect('/kunjungan')->with("success", "Berhasil mengisi pendaftaran");

@@ -27,6 +27,7 @@ CREATE TABLE `anggota` (
   `nama` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_kelas` bigint(20) unsigned NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jk` int(2) DEFAULT NULL COMMENT '0 = Perempuan  1 = Laki-laki',
   `no_tlp` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tlp_ortu` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -46,7 +47,7 @@ CREATE TABLE `anggota` (
 
 LOCK TABLES `anggota` WRITE;
 /*!40000 ALTER TABLE `anggota` DISABLE KEYS */;
-INSERT INTO `anggota` VALUES (4,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06','087787871366','08156087878','fawaznaufal23@gmail.com','$2y$10$EF3MadfuwB6qWYE0WgTSS.7xLdMnagpWEub89lypMzgion5/5eXxy',0,'2019-12-16 08:47:14','2019-12-16 08:47:14'),(5,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06','087787871366','08156087878','fawaznaufal32@gmail.com','$2y$10$AqbImM9Fg3xX73D4e.MLNOT7m.Njl/weM2/s9kArJbqzclhApEpgi',0,'2019-12-18 03:12:01','2019-12-18 03:12:01');
+INSERT INTO `anggota` VALUES (4,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal23@gmail.com','$2y$10$EF3MadfuwB6qWYE0WgTSS.7xLdMnagpWEub89lypMzgion5/5eXxy',0,'2019-12-16 08:47:14','2019-12-16 08:47:14'),(5,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal32@gmail.com','$2y$10$AqbImM9Fg3xX73D4e.MLNOT7m.Njl/weM2/s9kArJbqzclhApEpgi',0,'2019-12-18 03:12:01','2019-12-18 03:12:01');
 /*!40000 ALTER TABLE `anggota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,60 +142,36 @@ INSERT INTO `ketua_murid` VALUES (1,'759489','Suci Riyanti','Kpg. Imam Bonjol No
 UNLOCK TABLES;
 
 --
--- Table structure for table `kunjungan_anggota`
+-- Table structure for table `kunjungan`
 --
 
-DROP TABLE IF EXISTS `kunjungan_anggota`;
+DROP TABLE IF EXISTS `kunjungan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kunjungan_anggota` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `id_anggota` bigint(20) unsigned NOT NULL,
-  `waktu_kunjungan` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Ditambah otomatis',
-  PRIMARY KEY (`id`),
-  KEY `kunjungan_anggota_id_anggota_foreign` (`id_anggota`),
-  CONSTRAINT `kunjungan_anggota_id_anggota_foreign` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `kunjungan_anggota`
---
-
-LOCK TABLES `kunjungan_anggota` WRITE;
-/*!40000 ALTER TABLE `kunjungan_anggota` DISABLE KEYS */;
-INSERT INTO `kunjungan_anggota` VALUES (1,4,'2019-12-18 00:00:00'),(2,4,'2019-12-18 09:26:16'),(3,4,'2019-12-18 09:33:15'),(4,4,'2019-12-18 09:44:47'),(5,4,'2019-12-18 09:56:15'),(6,4,'2019-12-18 17:01:21'),(7,4,'2019-12-18 17:01:25'),(8,4,'2019-12-18 17:01:43'),(9,4,'2019-12-18 17:02:29'),(10,5,'2019-12-18 17:12:25'),(11,4,'2019-12-18 21:03:50'),(12,4,'2019-12-18 21:08:58'),(13,4,'2019-12-19 10:44:42');
-/*!40000 ALTER TABLE `kunjungan_anggota` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `kunjungan_murid`
---
-
-DROP TABLE IF EXISTS `kunjungan_murid`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kunjungan_murid` (
+CREATE TABLE `kunjungan` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_kelas` bigint(20) unsigned NOT NULL,
   `alamat` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jk` int(2) DEFAULT NULL COMMENT '0 = Perempuan  1 = Laki-laki',
   `no_tlp` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `waktu_kunjungan` datetime NOT NULL DEFAULT current_timestamp(),
+  `is_anggota` int(2) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `kunjungan_murid_id_kelas_foreign` (`id_kelas`),
   CONSTRAINT `kunjungan_murid_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `kunjungan_murid`
+-- Dumping data for table `kunjungan`
 --
 
-LOCK TABLES `kunjungan_murid` WRITE;
-/*!40000 ALTER TABLE `kunjungan_murid` DISABLE KEYS */;
-INSERT INTO `kunjungan_murid` VALUES (1,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06','08812048769','2019-12-18 17:04:50'),(2,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06','08812048769','2019-12-18 21:04:57');
-/*!40000 ALTER TABLE `kunjungan_murid` ENABLE KEYS */;
+LOCK TABLES `kunjungan` WRITE;
+/*!40000 ALTER TABLE `kunjungan` DISABLE KEYS */;
+INSERT INTO `kunjungan` VALUES (1,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 17:04:50',0),(2,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 21:04:57',0),(4,'sqmskmkqs',1,'sqmksmq',NULL,'mksqm','0','2019-12-19 13:55:41',0),(5,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',1,'08812048769','fawaznaufal23@gmail.com','2019-12-22 14:47:23',0),(6,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 14:51:41',1);
+/*!40000 ALTER TABLE `kunjungan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -334,7 +311,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,6 +320,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Naufal Fawwaz','fawaznaufal32@gmail.com',NULL,'$2y$10$6LWbhQK7PKXIqk8BscbNvOQlz1AKoXm.cqT3WKWuJsTP7x5IeCaBG',NULL,'2019-12-19 00:05:37','2019-12-19 00:05:37');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,4 +363,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-19 13:16:35
+-- Dump completed on 2019-12-22 14:52:29
