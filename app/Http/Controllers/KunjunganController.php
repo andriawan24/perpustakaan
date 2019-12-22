@@ -40,14 +40,6 @@ class KunjunganController extends Controller
 
     public function murid(Request $request)
     {
-        // $this->validate($request, [
-        //     "name" => "required|string",
-        //     "address" => "required|string",
-        //     "jk" => "required|integer",
-        //     "phone_number" => "required|numeric|min:11",
-        //     "email" => "required|numeric|min:11",
-        // ]);
-
         $nama = $request->input("name");
         $kelas = $request->input("class");
         $alamat = $request->input("address");
@@ -85,6 +77,9 @@ class KunjunganController extends Controller
                     "email" => $user->email,
                     "is_anggota" => 1,
                 ]);
+
+                $user->jumlah_kunjungan += 1;
+                $user->save();
                 
                 return redirect('/kunjungan')->with("success", "Berhasil mengisi pendaftaran");
             }else{

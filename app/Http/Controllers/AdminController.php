@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Anggota;
+use App\Buku;
+use App\KunjunganMurid;
+use App\Peminjam;
+use App\PeminjamAnggota;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -13,12 +19,19 @@ class AdminController extends Controller
 
     public function index()
     {
-        return "Halaman Dashboard";
+        $anggota = Anggota::all();
+        $buku = Buku::all();
+        $peminjaman = PeminjamAnggota::all();
+        $peminjaman_kelas = Peminjam::all();
+        $kunjungan = KunjunganMurid::all();
+
+        return view("admin.index", compact("anggota", "buku", "peminjaman", "kunjungan", "peminjaman_kelas"));
     }
 
     public function anggota_index()
     {
-        return "Halaman Anggota";
+        $anggota = Anggota::all();
+        return view("anggota.index", compact("anggota"));
     }
 
     public function anggota_tambah()
@@ -34,6 +47,7 @@ class AdminController extends Controller
             "alamat" => "required|string",
             "no_tlp" => "required|string",
             "tlp_ortu" => "required|string",
+            "jk" => "required|number|max:1",
             "email" => "required|string|email|unique:anggota",
             "password" => "required|string|min:8|confirmed"
         ]);
@@ -54,7 +68,7 @@ class AdminController extends Controller
         return "Mengedit id " . $id;
     }
     
-    public function anggota_proses_edit($id)
+    public function anggota_proses_edit($id, Request $request)
     {
         $this->validate($request, [
             "nama" => "required|string|max:255",
