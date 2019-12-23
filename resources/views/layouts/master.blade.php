@@ -245,7 +245,7 @@
                                             </li>
                                             {{-- <li class="list-inline-item">Dashboard</li> --}}
                                                 <li class="list-inline-item separate">
-                                                    {{ ucfirst($segment) }}
+                                                    {{ ucfirst($segment)     }}
                                                 </li>
                                             @endforeach
                                         </ul>

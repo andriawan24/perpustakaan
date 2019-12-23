@@ -37,7 +37,7 @@ CREATE TABLE `anggota` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `anggota_id_kelas_foreign` (`id_kelas`),
-  CONSTRAINT `anggota_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id`) ON DELETE CASCADE
+  CONSTRAINT `anggota_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -47,7 +47,7 @@ CREATE TABLE `anggota` (
 
 LOCK TABLES `anggota` WRITE;
 /*!40000 ALTER TABLE `anggota` DISABLE KEYS */;
-INSERT INTO `anggota` VALUES (4,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal23@gmail.com','$2y$10$EF3MadfuwB6qWYE0WgTSS.7xLdMnagpWEub89lypMzgion5/5eXxy',0,'2019-12-16 08:47:14','2019-12-16 08:47:14'),(5,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal32@gmail.com','$2y$10$AqbImM9Fg3xX73D4e.MLNOT7m.Njl/weM2/s9kArJbqzclhApEpgi',0,'2019-12-18 03:12:01','2019-12-18 03:12:01');
+INSERT INTO `anggota` VALUES (4,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal23@gmail.com','$2y$10$EF3MadfuwB6qWYE0WgTSS.7xLdMnagpWEub89lypMzgion5/5eXxy',3,'2019-12-16 08:47:14','2019-12-22 09:44:40'),(5,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal32@gmail.com','$2y$10$AqbImM9Fg3xX73D4e.MLNOT7m.Njl/weM2/s9kArJbqzclhApEpgi',1,'2019-12-18 03:12:01','2019-12-22 09:43:33');
 /*!40000 ALTER TABLE `anggota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +161,7 @@ CREATE TABLE `kunjungan` (
   PRIMARY KEY (`id`),
   KEY `kunjungan_murid_id_kelas_foreign` (`id_kelas`),
   CONSTRAINT `kunjungan_murid_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +170,7 @@ CREATE TABLE `kunjungan` (
 
 LOCK TABLES `kunjungan` WRITE;
 /*!40000 ALTER TABLE `kunjungan` DISABLE KEYS */;
-INSERT INTO `kunjungan` VALUES (1,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 17:04:50',0),(2,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 21:04:57',0),(4,'sqmskmkqs',1,'sqmksmq',NULL,'mksqm','0','2019-12-19 13:55:41',0),(5,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',1,'08812048769','fawaznaufal23@gmail.com','2019-12-22 14:47:23',0),(6,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 14:51:41',1);
+INSERT INTO `kunjungan` VALUES (1,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 17:04:50',0),(2,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 21:04:57',0),(4,'sqmskmkqs',1,'sqmksmq',NULL,'mksqm','0','2019-12-19 13:55:41',0),(5,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',1,'08812048769','fawaznaufal23@gmail.com','2019-12-22 14:47:23',0),(6,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 14:51:41',1),(7,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:43:07',1),(8,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal32@gmail.com','2019-12-22 23:43:33',1),(9,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:44:15',1),(10,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:44:40',1);
 /*!40000 ALTER TABLE `kunjungan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,18 +236,18 @@ CREATE TABLE `peminjam_anggota` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `id_anggota` bigint(20) unsigned NOT NULL,
   `id_buku` bigint(20) unsigned NOT NULL,
-  `tanggal_pinjam` date NOT NULL,
+  `tanggal_pinjam` date NOT NULL DEFAULT current_timestamp(),
   `tanggal_kembali` date NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `status` enum('pinjam','kembali') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 0 COMMENT '0 = Dipinjam 1 = Dikembalikan',
   `dikembalikan_pada` date DEFAULT NULL,
   `denda` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `peminjam_anggota_id_anggota_foreign` (`id_anggota`),
   KEY `peminjam_anggota_id_buku_foreign` (`id_buku`),
-  CONSTRAINT `peminjam_anggota_id_anggota_foreign` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `peminjam_anggota_id_buku_foreign` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `peminjam_anggota_id_anggota_foreign` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `peminjam_anggota_id_buku_foreign` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,6 +256,7 @@ CREATE TABLE `peminjam_anggota` (
 
 LOCK TABLES `peminjam_anggota` WRITE;
 /*!40000 ALTER TABLE `peminjam_anggota` DISABLE KEYS */;
+INSERT INTO `peminjam_anggota` VALUES (9,5,3,'2019-12-22','2019-12-25',1,0,NULL,0);
 /*!40000 ALTER TABLE `peminjam_anggota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,20 +269,20 @@ DROP TABLE IF EXISTS `peminjam_kelas`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `peminjam_kelas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `tanggal` datetime NOT NULL,
+  `tanggal` datetime NOT NULL DEFAULT current_timestamp(),
   `id_kelas` bigint(20) unsigned NOT NULL,
   `id_buku` bigint(20) unsigned NOT NULL,
   `ruang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jam_pelajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `status` enum('pinjam','kembali') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 0 COMMENT '0 = Pinjam 1 = Kembali',
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `peminjam_kelas_id_kelas_foreign` (`id_kelas`),
   KEY `peminjam_kelas_id_buku_foreign` (`id_buku`),
   CONSTRAINT `peminjam_kelas_id_buku_foreign` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`) ON DELETE CASCADE,
   CONSTRAINT `peminjam_kelas_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,6 +291,7 @@ CREATE TABLE `peminjam_kelas` (
 
 LOCK TABLES `peminjam_kelas` WRITE;
 /*!40000 ALTER TABLE `peminjam_kelas` DISABLE KEYS */;
+INSERT INTO `peminjam_kelas` VALUES (1,'2019-12-22 16:48:17',1,3,'23','3 - 5',20,0,NULL);
 /*!40000 ALTER TABLE `peminjam_kelas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,4 +365,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-22 14:52:29
+-- Dump completed on 2019-12-23 10:34:06
