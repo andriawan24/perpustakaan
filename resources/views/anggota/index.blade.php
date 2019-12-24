@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', "Anggota | Perpustakaan SMK Negeri 2 bandung")
+
 @section('content')
 <section>
     <div class="section__content section__content--p30">
@@ -9,16 +11,11 @@
                     <!-- DATA TABLE -->
                     <h3 class="title-1 m-b-35 mt-4">Anggota</h3>
 
-                    <form class="form-header" action="" method="POST">
-                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Cari Anggota" />
-                        <button class="au-btn--submit" type="submit">
-                            <i class="zmdi zmdi-search"></i>
-                        </button>
-                    </form>
+                    <input class="au-input au-input--xl" type="text" id="input-search" name="search" placeholder="Cari Anggota" />
 
 
                     <div class="table-responsive table-responsive-data2 mt-5">
-                        <table class="table table-data2">
+                        <table class="table table-data2" id="table-agt">
                             <thead>
                                 <tr>
                                     <th>Nama</th>
@@ -76,4 +73,22 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    $("#input-search").keyup(function(){
+        $input = $(this).val();
+        // console.log(input);
+        $.ajax({
+            type: "GET",
+            url : "{{ route('anggota.search') }}",
+            data : {'search' : $input},
+            success:function(data){
+                $('tbody').html(data);
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $.ajaxSetup({headers: {'csrftoken' : "{{ csrf_token() }}"}})
+</script>
 @endsection

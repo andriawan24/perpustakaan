@@ -5,9 +5,7 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
+    <meta name="author" content="Team Naufal dan Nur Iman">
 
     <!-- Title Page-->
     <title>@yield("title")</title>
@@ -34,7 +32,13 @@
     <link href="{{ asset("css/theme.css") }}" rel="stylesheet">
 
     
+    {{-- Scripts --}}
+    <!-- Jquery JS-->
+    <script src="{{ asset("vendors/jquery/jquery.min.js") }}"></script>
 
+    <!-- Bootstrap JS-->
+    <script src="{{ asset("vendors/popper/popper.min.js") }}"></script>
+    <script src="{{ asset("vendors/bootstrap/js/bootstrap.min.js") }}"></script>
 </head>
 
 <body class="animsition">
@@ -261,11 +265,6 @@
         @yield('content')
     </div>
 
-    <!-- Jquery JS-->
-    <script src="{{ asset("vendors/jquery/jquery.min.js") }}"></script>
-    <!-- Bootstrap JS-->
-    <script src="{{ asset("vendors/popper/popper.min.js") }}"></script>
-    <script src="{{ asset("vendors/bootstrap/js/bootstrap.min.js") }}"></script>
     <!-- vendors JS       -->
     <script src="{{ asset("vendors/animsition/animsition.min.js") }}"></script>
     <script src="{{ asset("vendors/slick/slick.min.js") }}">

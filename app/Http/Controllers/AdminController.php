@@ -30,8 +30,51 @@ class AdminController extends Controller
 
     public function anggota_index()
     {
+        if(isset($_GET['search'])) {
+            echo $_GET['search'];
+            die();
+        }
         $anggota = Anggota::all();
         return view("anggota.index", compact("anggota"));
+    }
+
+    public function anggota_search(Request $request)
+    {
+        if($request->ajax()) {
+            $output = "";
+            $anggota = Anggota::where("nama", "like", "%" . $request->search . "%")->get();
+
+            if($anggota) {
+                foreach ($anggota as $val => $key) {
+                    $output .= 
+                    "<tr class='tr-shadow'>".
+                        "<td>" . str_replace($request->search, "<span class='text-primary'>$request->search</span>", $key->nama) . "</td>" . 
+                        "<td style='width: 90px'>" . $key->kelas->nama . "</td>" . 
+                        "<td>" . "<span class='block-email'>" . $key->email . "</span>" . "</td>" . 
+                        "<td>" . $key->no_tlp . "</td>" . 
+                        "<td>" . $key->jumlah_kunjungan . "</td>" . 
+                        "<td>" . 
+                            "<div class='table-data-feature'>" .    
+                                "<button class='item' data-toggle='tooltip' data-placement='top' title='Edit'>" . 
+                                    "<i class='zmdi zmdi-edit'></i>" . 
+                                "</button>" . 
+                                "<button class='item' data-toggle='tooltip' data-placement='top' title='Delete'>" . 
+                                    "<i class='zmdi zmdi-delete'></i>" . 
+                                "</button>" . 
+                                "<button class='item' data-toggle='tooltip' data-placement='top' title='More'>" . 
+                                    "<i class='zmdi zmdi-info'></i>" . 
+                                "</button>" . 
+                            "</div>" .
+                        "</td>". 
+                    "</tr>" . 
+                    "<tr class='spacer'></tr>";
+                }
+
+                return Response($output);
+            }else{
+                
+            }
+        }
     }
 
     public function anggota_tambah()
