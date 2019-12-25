@@ -9,6 +9,8 @@ use App\Buku;
 use App\KunjunganMurid;
 use App\Peminjam;
 use App\PeminjamAnggota;
+use App\Kelas;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -79,48 +81,95 @@ class AdminController extends Controller
 
     public function anggota_tambah()
     {
-        return "Halaman Tambah Anggota";
+        return view("anggota.tambah");
     }
 
     public function anggota_proses_tambah(Request $request)
     {
         $this->validate($request, [
             "nama" => "required|string|max:255",
-            "id_kelas" => "required|number",
+            "id_kelas" => "required|numeric",
             "alamat" => "required|string",
-            "no_tlp" => "required|string",
-            "tlp_ortu" => "required|string",
-            "jk" => "required|number|max:1",
+            "jk" => "required|numeric|max:1",
+            "no_tlp" => "required|string|min:10|max:14",
+            "tlp_ortu" => "required|string|min:10|max:14",
             "email" => "required|string|email|unique:anggota",
             "password" => "required|string|min:8|confirmed"
         ]);
 
         $nama = $request->input("nama");
         $id_kelas = $request->input("id_kelas");
+        $jk = $request->input("jk");
         $alamat = $request->input("alamat");
         $no_tlp = $request->input("no_tlp");
         $tlp_ortu = $request->input("tlp_ortu");
         $email = $request->input("email");
         $password = $request->input("password");
+        
+        Anggota::create([
+            "nama" => $nama,
+            "id_kelas" => $id_kelas,
+            "jk" => $jk,
+            "alamat" => $alamat,
+            "no_tlp" => $no_tlp,
+            "tlp_ortu" => $tlp_ortu,
+            "email" => $email,
+            "password" => Hash::make($password)
+        ]);
 
-        return "Berhasil Menambah Anggota";
+        return redirect("/anggota")->with("success", "Berhasil Menambah Anggota");
     }
 
     public function anggota_edit($id)
     {
-        return "Mengedit id " . $id;
+        $anggota = Anggota::find($id);
+
+        return view("anggota.edit", compact("anggota"));
     }
     
     public function anggota_proses_edit($id, Request $request)
     {
         $this->validate($request, [
             "nama" => "required|string|max:255",
-            "id_kelas" => "required|number",
+            "id_kelas" => "required|numeric",
             "alamat" => "required|string",
-            "no_tlp" => "required|string",
-            "tlp_ortu" => "required|string",
-            "email" => "required|string|email|unique:anggota",
+            "jk" => "required|numeric|max:1",
+            "no_tlp" => "required|string|min:10|max:14",
+            "tlp_ortu" => "required|string|min:10|max:14",
+            "email" => "required|string|email",
             "password" => "required|string|min:8|confirmed"
         ]);
+
+        $anggota = Anggota::find($id);
+
+        $nama = $request->input("nama");
+        $id_kelas = $request->input("id_kelas");
+        $jk = $request->input("jk");
+        $alamat = $request->input("alamat");
+        $no_tlp = $request->input("no_tlp");
+        $tlp_ortu = $request->input("tlp_ortu");
+        $email = $request->input("email");
+        $password = $request->input("password");
+
+        $anggota->nama = $nama;
+        $anggota->id_kelas = $id_kelas;
+        $anggota->alamat = $alamat;
+        $anggota->jk = $jk;
+        $anggota->no_tlp = $no_tlp;
+        $anggota->tlp_ortu = $tlp_ortu;
+        $anggota->email = $email;
+        $anggota->password = Hash::make($password);
+        $anggota->save();
+
+        return redirect("/anggota")->with("success", "Berhasil Mengubah Data");
+    }
+
+    public function anggota_hapus($id)
+    {
+        $anggota = Anggota::find($id);
+
+        $anggota->delete();
+
+        return back()->with("success", "Berhasil menghapus anggota");
     }
 }

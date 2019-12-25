@@ -5,6 +5,7 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Team Naufal dan Nur Iman">
 
     <!-- Title Page-->
@@ -31,14 +32,14 @@
     <!-- Main CSS-->
     <link href="{{ asset("css/theme.css") }}" rel="stylesheet">
 
-    
+
     {{-- Scripts --}}
     <!-- Jquery JS-->
     <script src="{{ asset("vendors/jquery/jquery.min.js") }}"></script>
 
     <!-- Bootstrap JS-->
-    <script src="{{ asset("vendors/popper/popper.min.js") }}"></script>
     <script src="{{ asset("vendors/bootstrap/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("vendors/popper/popper.min.js") }}"></script>
 </head>
 
 <body class="animsition">
@@ -47,7 +48,6 @@
         <aside class="menu-sidebar2">
             <div class="logo">
                 <a href="#">
-                    {{-- <img src="{{ asset("img/icon/logo-white.png") }}" alt="Cool Admin" /> --}}
                     Logo SMKN 2 Bandung
                 </a>
             </div>
@@ -83,7 +83,7 @@
                                 </span>
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list" @if (request()->is('anggota*')) style="display:block;" @endif>
-                                <li class="{{ (request()->is('anggota')) ? "active" : '' }}">
+                                <li class="{{ (request()->is('anggota*')) ? "active" : '' }}">
                                     <a href="{{ route("anggota.index") }}">
                                         <i class="fa fa-users"></i>Daftar Anggota</a>
                                 </li>
@@ -175,7 +175,7 @@
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form> 
+                        </form>
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
@@ -266,6 +266,7 @@
     </div>
 
     <!-- vendors JS       -->
+    <script src="{{ asset("vendors/select2/js/select2.min.js") }}"></script>
     <script src="{{ asset("vendors/animsition/animsition.min.js") }}"></script>
     <script src="{{ asset("vendors/slick/slick.min.js") }}">
     </script>
@@ -278,8 +279,6 @@
     <script src="{{ asset("vendors/circle-progress/circle-progress.min.js") }}"></script>
     <script src="{{ asset("vendors/perfect-scrollbar/perfect-scrollbar.js") }}"></script>
     <script src="{{ asset("vendors/chartjs/Chart.bundle.min.js") }}"></script>
-    <script src="{{ asset("vendors/select2/js/select2.min.js") }}">
-    </script>
 
     <!-- Main JS-->
     <script src="{{ asset("js/main.js") }}"></script>
@@ -297,6 +296,7 @@
             }
         });
     </script>
+    @stack('js')
 </body>
 
 </html>

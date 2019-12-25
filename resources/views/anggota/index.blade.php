@@ -12,7 +12,9 @@
                     <h3 class="title-1 m-b-35 mt-4">Anggota</h3>
 
                     <input class="au-input au-input--xl" type="text" id="input-search" name="search" placeholder="Cari Anggota" />
-
+                    
+                    <a href="{{ route("anggota.tambah") }}" class="au-btn au-btn-icon au-btn--green au-btn--small ml-4 text-light">
+                        <i class="zmdi zmdi-plus"></i>Tambah Anggota</a>
 
                     <div class="table-responsive table-responsive-data2 mt-5">
                         <table class="table table-data2" id="table-agt">
@@ -38,12 +40,16 @@
                                     <td>{{ $val->jumlah_kunjungan }}</td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <a class="item" href="{{ route("anggota.edit", $val->id) }}" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
+                                            </a>
+                                            <form id="hapus" class="mr-1" action="{{ route('anggota.hapus', $val->id) }}" method="post">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button class="item" type="submit" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </a>
+                                            </form>
                                             <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                 <i class="zmdi zmdi-info"></i>
                                             </button>

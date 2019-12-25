@@ -28,5 +28,6 @@ Route::get("/anggota/tambah", "AdminController@anggota_tambah")->name("anggota.t
 Route::post("/anggota/tambah", "AdminController@anggota_proses_tambah")->name("anggota.tambahkan");
 Route::get("/anggota/edit/{id}", "AdminController@anggota_edit")->name("anggota.edit");
 Route::put("/anggota/edit/{id}", "AdminController@anggota_proses_edit")->name("anggota.editkan");
+Route::delete("/anggota/hapus/{id}", "AdminController@anggota_hapus")->name("anggota.hapus");
 
 Auth::routes();
