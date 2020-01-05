@@ -95,7 +95,7 @@ return [
     'numeric' => 'The :attribute must be a number.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => 'Tolong isi field :attribute.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -129,9 +129,16 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'id_buku' => [
+            'required' => 'Silahkan pilih buku',
         ],
+        'id_kelas' => [
+            'required' => 'Silahkan pilih kelas',
+            'not_in' => 'Silahkan pilih kelas',
+        ],
+        "jumlah" => [
+            "max" => "Stok buku tidak mencukupi"
+        ]
     ],
 
     /*

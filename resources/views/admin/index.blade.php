@@ -66,7 +66,7 @@
                         <div class="dropDownSelect2"></div>
                     </div>
 
-                    <a href="#" class="au-btn au-btn-icon au-btn--green au-btn--small ml-4 text-light">
+                    <a href="{{ route("admin.pinjam") }}" class="au-btn au-btn-icon au-btn--green au-btn--small ml-4 text-light">
                         <i class="zmdi zmdi-plus"></i>Tambah Peminjaman</a>
                     <!-- DATA TABLE-->
                     <div class="table-responsive m-b-40 m-t-30" id="table-murid">

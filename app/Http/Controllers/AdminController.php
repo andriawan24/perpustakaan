@@ -30,6 +30,13 @@ class AdminController extends Controller
         return view("admin.index", compact("anggota", "buku", "peminjaman", "kunjungan", "peminjaman_kelas"));
     }
 
+    public function tambah_peminjaman()
+    {
+        $list_buku = Buku::all();
+        $list_anggota = Anggota::all();
+        return view("admin.pinjam", compact("list_buku", 'list_anggota'));
+    }
+
     public function anggota_index()
     {
         if(isset($_GET['search'])) {
@@ -171,5 +178,38 @@ class AdminController extends Controller
         $anggota->delete();
 
         return back()->with("success", "Berhasil menghapus anggota");
+    }
+
+    public function peminjaman_murid(Request $request)
+    {
+        $this->validate($request, [
+            "id_kelas" => "required|numeric|not_in:0",
+            "id_buku" => "required|numeric|not_in:0",
+            "ruang" => "required|numeric|not_in:0",
+            "jam_pelajaran" => "required",
+        ]);
+        $buku = Buku::where("id", $request->input("id_buku"))->first();
+        $this->validate($request, [
+            "jumlah" => "required|numeric|max:$buku->jumlah"
+        ]);
+
+        $id_kelas = $request->input("id_kelas");
+        $id_buku = $request->input("id_buku");
+        $ruang = $request->input("ruang");
+        $jumlah = $request->input("jumlah");
+        $jam_pelajaran = $request->input("jam_pelajaran");
+
+        Peminjam::create([
+            "id_kelas" => $id_kelas,
+            "id_buku" => $id_buku,
+            "ruang" => $ruang, 
+            "jumlah" => $jumlah, 
+            "jam_pelajaran" => $jam_pelajaran 
+        ]);
+
+        $buku->jumlah -= $jumlah;
+        $buku->save();
+
+        return redirect('/dashboard')->with("success", "Berhasil melakukan peminjaman");
     }
 }

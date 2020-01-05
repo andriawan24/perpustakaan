@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="author" content="Team Naufal dan Nur Iman">
+    <meta name="author" content="Team Perpustakaan : Naufal dan Nur Iman">
+    <meta name="description" content="Aplikasi berbasis website untuk menunjang sarana perpustakaan di sekolah-sekolah atau instansi pemerintah sebagai bentuk dari adanya kemajuan industri 4.0.">
 
     <!-- Title Page-->
     <title>@yield("title")</title>
@@ -20,7 +21,9 @@
     <!-- Bootstrap CSS-->
     <link href="{{ asset("vendors/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet">
 
-    <!-- Vendors CSS-->
+    <link rel="shortcut icon" href="{{ asset("img/smkn2.png") }}" type="image/x-icon">
+
+    <!-- Vendor CSS-->
     <link href="{{ asset("vendors/animsition/animsition.min.css") }}" rel="stylesheet">
     <link href="{{ asset("vendors/bootstrap-progressbar/bootstrap-progressbar.min.css") }}" rel="stylesheet">
     <link href="{{ asset("vendors/wow/animate.css") }}" rel="stylesheet">
@@ -28,6 +31,7 @@
     <link href="{{ asset("vendors/slick/slick.css") }}" rel="stylesheet">
     <link href="{{ asset("vendors/select2/css/select2.min.css") }}" rel="stylesheet">
     <link href="{{ asset("vendors/perfect-scrollbar/perfect-scrollbar.css") }}" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
     <!-- Main CSS-->
     <link href="{{ asset("css/theme.css") }}" rel="stylesheet">
@@ -48,7 +52,7 @@
         <aside class="menu-sidebar2">
             <div class="logo">
                 <a href="#">
-                    Logo SMKN 2 Bandung
+                    Ini logo SMK Negeri 2 Kota Bandung
                 </a>
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
@@ -249,7 +253,10 @@
                                             </li>
                                             {{-- <li class="list-inline-item">Dashboard</li> --}}
                                                 <li class="list-inline-item separate">
-                                                    {{ ucfirst($segment)     }}
+                                                    @php
+                                                        $segment = explode("-", $segment);
+                                                    @endphp
+                                                    {{ (isset($segment[1])) ? ucfirst($segment[0]) . " " . ucfirst($segment[1]) : ucfirst($segment[0]) }}
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -265,7 +272,7 @@
         @yield('content')
     </div>
 
-    <!-- vendors JS       -->
+    <!-- vendors JS -->
     <script src="{{ asset("vendors/select2/js/select2.min.js") }}"></script>
     <script src="{{ asset("vendors/animsition/animsition.min.js") }}"></script>
     <script src="{{ asset("vendors/slick/slick.min.js") }}">
@@ -279,6 +286,7 @@
     <script src="{{ asset("vendors/circle-progress/circle-progress.min.js") }}"></script>
     <script src="{{ asset("vendors/perfect-scrollbar/perfect-scrollbar.js") }}"></script>
     <script src="{{ asset("vendors/chartjs/Chart.bundle.min.js") }}"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <!-- Main JS-->
     <script src="{{ asset("js/main.js") }}"></script>

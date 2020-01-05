@@ -15,15 +15,17 @@ class AnggotaTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create("id_ID");
-        Anggota::create([
-            'nama' => "Naufal Fawwaz Andriawan",
-            'id_kelas' => 1,
-            'alamat' => "Jl. Sawahlega no. 35 RT02 RW06",
-            'jk' => 0,
-            'no_tlp' => "087787871366",
-            'tlp_ortu' => "08156087878",
-            'email' => "fawaznaufal32@gmail.com",
-            "password" => Hash::make("andriawan24")
-        ]);
+        for ($i=0; $i < 10; $i++) { 
+            Anggota::create([
+                "nama" => $faker->name,
+                "id_kelas" => 1,
+                "jk" => 1,
+                "alamat" => $faker->address,
+                "no_tlp" => $faker->phoneNumber,
+                "tlp_ortu" => $faker->phoneNumber,
+                "email" => $faker->email,
+                "password" => Hash::make($faker->sentence)
+            ]);   
+        }
     }
 }

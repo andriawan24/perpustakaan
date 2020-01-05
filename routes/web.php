@@ -22,6 +22,8 @@ Route::post("/kunjungan/anggota", "KunjunganController@anggota")->name("kunjunga
 
 // Admin Section
 Route::get("/dashboard", "AdminController@index")->name("admin.index");
+Route::get("/tambah-peminjaman", "AdminController@tambah_peminjaman")->name("admin.pinjam");
+Route::post("/tambah-peminjaman", "AdminController@peminjaman_murid")->name("admin.pinjam.murid");
 Route::get("/anggota", "AdminController@anggota_index")->name("anggota.index");
 Route::get("/anggota/search", "AdminController@anggota_search")->name("anggota.search");
 Route::get("/anggota/tambah", "AdminController@anggota_tambah")->name("anggota.tambah");
