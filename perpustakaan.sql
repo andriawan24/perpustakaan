@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: perpustakaan
 -- ------------------------------------------------------
--- Server version	10.4.6-MariaDB
+-- Server version	10.2.6-MariaDB-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -47,7 +47,7 @@ CREATE TABLE `anggota` (
 
 LOCK TABLES `anggota` WRITE;
 /*!40000 ALTER TABLE `anggota` DISABLE KEYS */;
-INSERT INTO `anggota` VALUES (4,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal23@gmail.com','$2y$10$EF3MadfuwB6qWYE0WgTSS.7xLdMnagpWEub89lypMzgion5/5eXxy',3,'2019-12-16 08:47:14','2019-12-22 09:44:40'),(5,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal32@gmail.com','$2y$10$AqbImM9Fg3xX73D4e.MLNOT7m.Njl/weM2/s9kArJbqzclhApEpgi',1,'2019-12-18 03:12:01','2019-12-22 09:43:33');
+INSERT INTO `anggota` VALUES (5,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','08156087878','fawaznaufal32@gmail.com','$2y$10$AqbImM9Fg3xX73D4e.MLNOT7m.Njl/weM2/s9kArJbqzclhApEpgi',1,'2019-12-18 03:12:01','2019-12-22 09:43:33');
 /*!40000 ALTER TABLE `anggota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +76,7 @@ CREATE TABLE `buku` (
 
 LOCK TABLES `buku` WRITE;
 /*!40000 ALTER TABLE `buku` DISABLE KEYS */;
-INSERT INTO `buku` VALUES (1,'Aliquam commodi debitis inventore.','Genta Zulaika','CV Yulianti Marpaung',5,'2019-12-16 00:00:00','0'),(2,'Et enim ut.','Aurora Mandasari','CV Prayoga',21,'2019-12-16 00:00:00','0'),(3,'Cum dolores optio.','Titin Belinda Pertiwi S.Farm','CV Yuliarti Sinaga',18,'2019-12-16 00:00:00','0'),(4,'Cum consequatur omnis.','Putri Permata','CV Tampubolon',9,'2019-12-16 00:00:00','0'),(5,'Iusto est qui recusandae.','Patricia Yani Rahimah S.Ked','PT Mardhiyah (Persero) Tbk',11,'2019-12-16 00:00:00','0'),(6,'Velit in dolore unde dicta et.','Dadi Waskita','PT Budiyanto',27,'2019-12-16 00:00:00','0'),(7,'Aut rem eveniet dolores et.','Ella Nasyiah S.Sos','PT Prasetya Hartati (Persero) Tbk',20,'2019-12-16 00:00:00','0'),(8,'Libero nisi perferendis voluptate.','Gara Gunawan','CV Oktaviani',3,'2019-12-16 00:00:00','0'),(9,'Sed ea suscipit suscipit eaque.','Endah Rahimah','PT Firmansyah',25,'2019-12-16 00:00:00','0'),(10,'Quis animi sed.','Surya Gadang Napitupulu','PT Yuniar',21,'2019-12-16 00:00:00','0'),(11,'Aut voluptate in est voluptate.','Rika Tari Anggraini M.Ak','Perum Hidayanto (Persero) Tbk',18,'2019-12-16 00:00:00','0'),(12,'Odio sapiente dolor magnam porro.','Wirda Yessi Nasyidah','PT Sitorus Tbk',19,'2019-12-16 00:00:00','0'),(13,'Labore aliquam omnis est possimus.','Michelle Mayasari','Perum Mustofa Wahyuni Tbk',26,'2019-12-16 00:00:00','0'),(14,'Labore sit quo.','Genta Wulandari','Perum Uwais Tbk',26,'2019-12-16 00:00:00','0'),(15,'Rerum doloremque voluptatem assumenda sed.','Michelle Purwanti','CV Lailasari Tbk',11,'2019-12-16 00:00:00','0'),(16,'Nobis numquam ex et.','Rudi Prabowo','PT Prasetya Tbk',1,'2019-12-16 00:00:00','0'),(17,'Et nulla aperiam laudantium.','Kuncara Pradipta','Perum Gunawan Wasita (Persero) Tbk',26,'2019-12-16 00:00:00','0'),(18,'Similique dolores dolore voluptatum.','Siska Lalita Utami','PT Sitorus',16,'2019-12-16 00:00:00','0'),(19,'Reiciendis aspernatur deleniti quia laboriosam.','Niyaga Kuswoyo S.IP','PT Mandala Firgantoro',13,'2019-12-16 00:00:00','0'),(20,'Est reiciendis praesentium velit repudiandae non.','Salsabila Rahayu','PD Ardianto',21,'2019-12-16 00:00:00','0'),(21,'Tempora sit unde laborum.','Eva Ira Hastuti S.Psi','PD Rajata Mangunsong',12,'2019-12-16 00:00:00','0'),(22,'Ut dolor accusantium et.','Cager Wahyudin','PD Damanik Permadi Tbk',13,'2019-12-16 00:00:00','0');
+INSERT INTO `buku` VALUES (1,'Aliquam commodi debitis inventore.','Genta Zulaika','CV Yulianti Marpaung',5,'2019-12-16 00:00:00','0'),(2,'Et enim ut.','Aurora Mandasari','CV Prayoga',21,'2019-12-16 00:00:00','0'),(3,'Cum dolores optio.','Titin Belinda Pertiwi S.Farm','CV Yuliarti Sinaga',18,'2019-12-16 00:00:00','0'),(4,'Cum consequatur omnis.','Putri Permata','CV Tampubolon',9,'2019-12-16 00:00:00','0'),(5,'Iusto est qui recusandae.','Patricia Yani Rahimah S.Ked','PT Mardhiyah (Persero) Tbk',11,'2019-12-16 00:00:00','0'),(6,'Velit in dolore unde dicta et.','Dadi Waskita','PT Budiyanto',27,'2019-12-16 00:00:00','0'),(7,'Aut rem eveniet dolores et.','Ella Nasyiah S.Sos','PT Prasetya Hartati (Persero) Tbk',4,'2019-12-16 00:00:00','0'),(8,'Libero nisi perferendis voluptate.','Gara Gunawan','CV Oktaviani',3,'2019-12-16 00:00:00','0'),(9,'Sed ea suscipit suscipit eaque.','Endah Rahimah','PT Firmansyah',25,'2019-12-16 00:00:00','0'),(10,'Quis animi sed.','Surya Gadang Napitupulu','PT Yuniar',21,'2019-12-16 00:00:00','0'),(11,'Aut voluptate in est voluptate.','Rika Tari Anggraini M.Ak','Perum Hidayanto (Persero) Tbk',0,'2019-12-16 00:00:00','0'),(12,'Odio sapiente dolor magnam porro.','Wirda Yessi Nasyidah','PT Sitorus Tbk',19,'2019-12-16 00:00:00','0'),(13,'Labore aliquam omnis est possimus.','Michelle Mayasari','Perum Mustofa Wahyuni Tbk',26,'2019-12-16 00:00:00','0'),(14,'Labore sit quo.','Genta Wulandari','Perum Uwais Tbk',26,'2019-12-16 00:00:00','0'),(15,'Rerum doloremque voluptatem assumenda sed.','Michelle Purwanti','CV Lailasari Tbk',11,'2019-12-16 00:00:00','0'),(16,'Nobis numquam ex et.','Rudi Prabowo','PT Prasetya Tbk',1,'2019-12-16 00:00:00','1581927830_coffee-2319107.jpg'),(17,'Et nulla aperiam laudantium.','Kuncara Pradipta','Perum Gunawan Wasita (Persero) Tbk',26,'2019-12-16 00:00:00','0'),(18,'Similique dolores dolore voluptatum.','Siska Lalita Utami','PT Sitorus',16,'2019-12-16 00:00:00','0'),(19,'Reiciendis aspernatur deleniti quia laboriosam.','Niyaga Kuswoyo S.IP','PT Mandala Firgantoro',13,'2019-12-16 00:00:00','0'),(20,'Est reiciendis praesentium velit repudiandae non.','Salsabila Rahayu','PD Ardianto',21,'2019-12-16 00:00:00','0'),(21,'Tempora sit unde laborum.','Eva Ira Hastuti S.Psi','PD Rajata Mangunsong',12,'2019-12-16 00:00:00','0'),(22,'Ut dolor accusantium et.','Cager Wahyudin','PD Damanik Permadi Tbk',13,'2019-12-16 00:00:00','0');
 /*!40000 ALTER TABLE `buku` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +161,7 @@ CREATE TABLE `kunjungan` (
   PRIMARY KEY (`id`),
   KEY `kunjungan_murid_id_kelas_foreign` (`id_kelas`),
   CONSTRAINT `kunjungan_murid_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +170,7 @@ CREATE TABLE `kunjungan` (
 
 LOCK TABLES `kunjungan` WRITE;
 /*!40000 ALTER TABLE `kunjungan` DISABLE KEYS */;
-INSERT INTO `kunjungan` VALUES (1,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 17:04:50',0),(2,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 21:04:57',0),(4,'sqmskmkqs',1,'sqmksmq',NULL,'mksqm','0','2019-12-19 13:55:41',0),(5,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',1,'08812048769','fawaznaufal23@gmail.com','2019-12-22 14:47:23',0),(6,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 14:51:41',1),(7,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:43:07',1),(8,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal32@gmail.com','2019-12-22 23:43:33',1),(9,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:44:15',1),(10,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:44:40',1);
+INSERT INTO `kunjungan` VALUES (1,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 17:04:50',0),(2,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',NULL,'08812048769','0','2019-12-18 21:04:57',0),(4,'sqmskmkqs',1,'sqmksmq',NULL,'mksqm','0','2019-12-19 13:55:41',0),(5,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',1,'08812048769','fawaznaufal23@gmail.com','2019-12-22 14:47:23',0),(6,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 14:51:41',1),(7,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:43:07',1),(8,'Naufal Fawwaz Andriawan',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal32@gmail.com','2019-12-22 23:43:33',1),(9,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:44:15',1),(10,'Naufal Fawwaz',1,'Jl. Sawahlega no. 35 RT02 RW06',1,'087787871366','fawaznaufal23@gmail.com','2019-12-22 23:44:40',1),(11,'Naufal Fawwaz',1,'Jl. Sawahlega No. 35 RT.03 RW.06',1,'08812048769','fawaznaufal23@gmail.com','2020-02-17 15:05:59',0);
 /*!40000 ALTER TABLE `kunjungan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +247,7 @@ CREATE TABLE `peminjam_anggota` (
   KEY `peminjam_anggota_id_buku_foreign` (`id_buku`),
   CONSTRAINT `peminjam_anggota_id_anggota_foreign` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `peminjam_anggota_id_buku_foreign` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,6 +274,7 @@ CREATE TABLE `peminjam_kelas` (
   `id_buku` bigint(20) unsigned NOT NULL,
   `ruang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jam_pelajaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guru_mapel` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jumlah` int(11) NOT NULL,
   `status` int(2) NOT NULL DEFAULT 0 COMMENT '0 = Pinjam 1 = Kembali',
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -282,7 +283,7 @@ CREATE TABLE `peminjam_kelas` (
   KEY `peminjam_kelas_id_buku_foreign` (`id_buku`),
   CONSTRAINT `peminjam_kelas_id_buku_foreign` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`) ON DELETE CASCADE,
   CONSTRAINT `peminjam_kelas_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,7 +292,7 @@ CREATE TABLE `peminjam_kelas` (
 
 LOCK TABLES `peminjam_kelas` WRITE;
 /*!40000 ALTER TABLE `peminjam_kelas` DISABLE KEYS */;
-INSERT INTO `peminjam_kelas` VALUES (1,'2019-12-22 16:48:17',1,3,'23','3 - 5',20,0,NULL);
+INSERT INTO `peminjam_kelas` VALUES (2,'2020-02-17 14:43:01',1,11,'42','2-8','Bu Pratiwi',10,0,NULL),(4,'2020-02-17 14:43:52',1,11,'80','1-3','Bu Tiwi',8,0,NULL),(5,'2020-02-17 14:45:28',1,7,'10','1-3','Bu Tiwi',5,0,NULL);
 /*!40000 ALTER TABLE `peminjam_kelas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-23 10:34:06
+-- Dump completed on 2020-02-17 15:39:59

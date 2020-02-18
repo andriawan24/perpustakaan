@@ -8,6 +8,8 @@ class PeminjamAnggota extends Model
 {
     protected $table = "peminjam_anggota";
 
+    protected $fillable = ["id_anggota", "id_buku", "tanggal_kembali", "jumlah"];
+
     public function anggota()
     {
         return $this->hasOne("App\Anggota", "id", "id_anggota");
@@ -17,4 +19,6 @@ class PeminjamAnggota extends Model
     {
         return $this->hasOne("App\Buku", "id");
     }
+
+    public $timestamps = false;
 }

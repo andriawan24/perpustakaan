@@ -12,7 +12,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <strong>Horizontal</strong> Form
+                            <a href="{{ route("anggota.index") }}" class="btn btn-sm btn-warning float-right text-light"><i class="fa fa-undo"></i> Back</a>
                         </div>
                         <div class="card-body card-block">
                             <form action="{{ route("anggota.edit", $anggota->id) }}" method="post" class="form-horizontal">

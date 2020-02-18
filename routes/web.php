@@ -22,14 +22,31 @@ Route::post("/kunjungan/anggota", "KunjunganController@anggota")->name("kunjunga
 
 // Admin Section
 Route::get("/dashboard", "AdminController@index")->name("admin.index");
-Route::get("/tambah-peminjaman", "AdminController@tambah_peminjaman")->name("admin.pinjam");
-Route::post("/tambah-peminjaman", "AdminController@peminjaman_murid")->name("admin.pinjam.murid");
-Route::get("/anggota", "AdminController@anggota_index")->name("anggota.index");
-Route::get("/anggota/search", "AdminController@anggota_search")->name("anggota.search");
-Route::get("/anggota/tambah", "AdminController@anggota_tambah")->name("anggota.tambah");
-Route::post("/anggota/tambah", "AdminController@anggota_proses_tambah")->name("anggota.tambahkan");
-Route::get("/anggota/edit/{id}", "AdminController@anggota_edit")->name("anggota.edit");
-Route::put("/anggota/edit/{id}", "AdminController@anggota_proses_edit")->name("anggota.editkan");
-Route::delete("/anggota/hapus/{id}", "AdminController@anggota_hapus")->name("anggota.hapus");
+Route::get("/tambah-peminjaman", "PeminjamanController@create")->name("peminjaman.pinjam");
+Route::post("/tambah-peminjaman-murid", "PeminjamanController@peminjaman_murid")->name("peminjaman.pinjam.murid");
+Route::post("/tambah-peminjaman-anggota", "PeminjamanController@peminjaman_anggota")->name("peminjaman.pinjam.anggota");
+
+Route::get("/anggota", "AnggotaController@index")->name("anggota.index");
+Route::get("/anggota/detail/{anggota}", "AnggotaController@detail")->name("anggota.detail");
+Route::get("/anggota/search", "AnggotaController@search")->name("anggota.search");
+Route::get("/anggota/tambah", "AnggotaController@create")->name("anggota.create");
+Route::post("/anggota/tambah", "AnggotaController@store")->name("anggota.store");
+Route::get("/anggota/edit/{id}", "AnggotaController@edit")->name("anggota.edit");
+Route::put("/anggota/edit/{id}", "AnggotaController@update")->name("anggota.update");
+Route::delete("/anggota/hapus/{id}", "AnggotaController@destroy")->name("anggota.destroy");
+
+Route::get("/buku", "BukuController@index")->name("buku.index");
+Route::get("/buku/search", "BukuController@search")->name("buku.search");
+Route::get("/buku/tambah", "BukuController@create")->name("buku.create");
+Route::post("/buku/tambah", "BukuController@store")->name("buku.store");
+Route::get("/buku/edit/{id}", "BukuController@edit")->name("buku.edit");
+Route::put("/buku/edit/{id}", "BukuController@update")->name("buku.update");
+Route::delete("/buku/destroy/{id}", "BukuController@destroy")->name("buku.destroy");
+
+Route::get("/daftar-kunjungan", "KunjunganController@list")->name("kunjungan.list");
+Route::get("/kunjungan/filter-kunjungan", "KunjunganController@filter")->name("kunjungan.filter");
 
 Auth::routes();
+
+// Laporan Excel
+Route::get("/laporan/anggota", "AnggotaController@export_excel")->name("anggota.laporan");

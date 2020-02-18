@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Kelas;
 use App\KunjunganAnggota;
 use App\KunjunganMurid;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class KunjunganController extends Controller
@@ -87,6 +88,42 @@ class KunjunganController extends Controller
             }
         }else{
             return redirect("/kunjungan")->with("warning", "Email tidak ditemukan");
+        }
+    }
+
+    public function list()
+    {
+        $kunjungan_murid = KunjunganMurid::paginate(5);
+        $kunjungan_anggota = KunjunganAnggota::all();
+
+        return view("kunjungan.list", compact("kunjungan_murid", "kunjungan_anggota"));
+    }
+
+    public function filter(Request $request)
+    {
+        if($request->ajax()) {
+            $output = "";
+            $where = $request->sort;
+
+            $kunjungan = KunjunganMurid::orderBy($where, "asc")->get();
+
+            if($kunjungan) {
+                foreach ($kunjungan as $val => $key) {
+                    $output .=
+                    "<tr class=\"tr-shadow\">" . 
+                        "<td>" . $key->nama . "</td>" . 
+                        "<td>" . $key->kelas->nama . "</td>" .
+                        "<td>" . $key->alamat . "</td>" .
+                        "<td>" . $key->no_tlp  . "</td>" .
+                        "<td>" . date('h:i d/m/Y', strtotime($key->waktu_kunjungan)) . "</td>" .
+                        "<td>" . (($key->is_anggota == 0) ? "Bukan Anggota" : "Anggota") . "</td>" . 
+                    "</tr>" . 
+                    "<tr class=\"spacer\"></tr>";
+                }
+                return Response($output);
+            }else{
+                return Response("Data tidak ditemukan");
+            }
         }
     }
 }

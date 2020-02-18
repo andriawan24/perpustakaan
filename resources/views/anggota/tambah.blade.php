@@ -12,10 +12,10 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <strong>Horizontal</strong> Form
+                            <a href="{{ URL::previous() }}" class="btn btn-sm btn-warning float-right text-light"><i class="fa fa-undo"></i> Back</a>
                         </div>
                         <div class="card-body card-block">
-                            <form action="{{ route("anggota.tambah") }}" method="post" class="form-horizontal">
+                            <form action="{{ route("anggota.store") }}" method="post" class="form-horizontal">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="nama" class="col-form-label col-md-3">Nama</label>

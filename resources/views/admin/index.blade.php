@@ -3,9 +3,6 @@
 @section('title', "Dashboard | Perpustakaan SMK Negeri 2 Kota Bandung")
 
 @section('content')
-    
-<!-- Dari sini -->
-
 <!-- STATISTIC-->
 <section class="statistic">
     <div class="section__content section__content--p30">
@@ -66,7 +63,7 @@
                         <div class="dropDownSelect2"></div>
                     </div>
 
-                    <a href="{{ route("admin.pinjam") }}" class="au-btn au-btn-icon au-btn--green au-btn--small ml-4 text-light">
+                    <a href="{{ route("peminjaman.pinjam") }}" class="au-btn au-btn-icon au-btn--green au-btn--small ml-4 text-light">
                         <i class="zmdi zmdi-plus"></i>Tambah Peminjaman</a>
                     <!-- DATA TABLE-->
                     <div class="table-responsive m-b-40 m-t-30" id="table-murid">
@@ -79,6 +76,7 @@
                                     <th>Jumlah</th>
                                     <th>Tanggal</th>
                                     <th>Jam</th>
+                                    <th>Pengajar</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -90,6 +88,7 @@
                                     <td>{{ $val->jumlah }}</td>
                                     <td>{{ date("d/m/Y", strtotime($val->tanggal)) }}</td>
                                     <td>{{ $val->jam_pelajaran }}</td>
+                                    <td>{{ $val->guru_mapel }}</td>
                                     <td class="{{ ($val->status == 0) ? "process" : "denied" }}">{{ ($val->status == 0) ? "Dipinjam" : "Dikembalikan"}}</td>
                                 </tr>
                                 @endforeach
@@ -127,21 +126,5 @@
         </div>
     </div>
 </section>
-
-{{-- Footer --}}
-<section>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <p>Copyright © 2019 Fall. All rights reserved <a href="https://andriawan24.github.io">Team Naufal Fawwaz & Nur Iman</a>.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- END PAGE CONTAINER-->
-</div>
-
-<!-- Sampai Sini -->
 @endsection

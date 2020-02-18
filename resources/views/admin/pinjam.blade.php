@@ -9,7 +9,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="title-1 m-b-35 mt-4">Tambah Peminjaman</h3>
-
                     <div class="card">
                         <div class="card-header">
                             <div class="switch-field" id="pilih-peminjaman">
@@ -21,7 +20,7 @@
                         </div>
                         <div id="form-murid">
                             <div class="card-body card-block">
-                                <form action="{{ route("admin.pinjam.murid") }}" method="post" class="form-horizontal">
+                                <form action="{{ route("peminjaman.pinjam.murid") }}" method="post" class="form-horizontal">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="id_kelas" class="col-form-label col-md-3">Kelas</label>
@@ -71,6 +70,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="guru_mapel" class="col-form-label col-md-3">Pengajar</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="guru_mapel" id="guru_mapel" class="form-control @error('guru_mapel') is-invalid @enderror" placeholder="Masukkan Nama Pengajar" value="{{ old("guru_mapel") }}">
+                                        @error("guru_mapel")
+                                            <span class="help-block">
+                                                <span class="text-danger">{{ $message }}</span>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="jam_pelajaran" class="col-form-label col-md-3">Jam Pelajaran</label>
                                     <div class="col-md-9">
                                         <input type="text" name="jam_pelajaran" id="jam_pelajaran" class="form-control @error('jam_pelajaran') is-invalid @enderror" placeholder="Masukkan Jam Pelajaran" value="{{ old("jam_pelajaran") }}">
@@ -99,7 +109,7 @@
 
                         <div id="form-anggota" style="display:none">
                             <div class="card-body card-block">
-                                <form action="{{ route("anggota.tambah") }}" method="post" class="form-horizontal">
+                                <form action="{{ route('peminjaman.pinjam.anggota') }}" method="post" class="form-horizontal">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="nama_anggota" class="col-form-label col-md-3">Peminjam</label>
@@ -144,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
+                                <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
@@ -159,6 +169,7 @@
             </div>
         </div>
     </div>
+</section>
 
     <!-- Modal Simpanan -->
     <div class="modal fade bd-example-modal-lg" id="listBuku" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >

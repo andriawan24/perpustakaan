@@ -17,6 +17,8 @@
     <link href="{{ asset("vendors/font-awesome-4.7/css/font-awesome.min.css") }}" rel="stylesheet">
     <link href="{{ asset("vendors/font-awesome-5/css/fontawesome-all.min.css") }}" rel="stylesheet">
     <link href="{{ asset("vendors/mdi-font/css/material-design-iconic-font.min.css") }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendors/sweetalert2/sweetalert2.min.css') }}">
+
 
     <!-- Bootstrap CSS-->
     <link href="{{ asset("vendors/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet">
@@ -44,9 +46,11 @@
     <!-- Bootstrap JS-->
     <script src="{{ asset("vendors/bootstrap/js/bootstrap.min.js") }}"></script>
     <script src="{{ asset("vendors/popper/popper.min.js") }}"></script>
+    <script src="{{ asset('vendors/sweetalert2/sweetalert2.js') }}"></script>
 </head>
 
 <body class="animsition">
+    @include("layouts.alert")
     <div class="page-wrapper">
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar2">
@@ -79,30 +83,20 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-users"></i>Anggota
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list" @if (request()->is('anggota*')) style="display:block;" @endif>
-                                <li class="{{ (request()->is('anggota*')) ? "active" : '' }}">
-                                    <a href="{{ route("anggota.index") }}">
-                                        <i class="fa fa-users"></i>Daftar Anggota</a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-users"></i>Daftar Wali Kelas</a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-users"></i>Kelola Kelas</a>
-                                </li>
-                            </ul>
+                        <li class="{{ (request()->is('kunjungan*')) ? "active" : '' }}">
+                            <a href="{{ route("kunjungan.list") }}" class="js-arrow">
+                                <i class="fa fa-address-book"></i> Kunjungan</a>
+                        </li>   
+                        <li class="{{ (request()->is('anggota*')) ? "active" : '' }}">
+                            <a href="{{ route("anggota.index") }}" class="js-arrow">
+                                <i class="fa fa-users"></i>Anggota</a>
+                        </li>   
+                        <li class="{{ (request()->is("kelas*")) ? 'active' : '' }}">
+                            <a href="" class="js-arrow">
+                                <i class="fa fa-home"></i>Kelas</a>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#">
+                        <li class="{{ (request()->is("buku*")) ? 'active' : '' }}">
+                            <a class="js-arrow" href="{{ route("buku.index") }}">
                                 <i class="fas fa-book"></i>Buku</a>
                         </li>
                         <li class="has-sub">
@@ -114,7 +108,7 @@
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route("anggota.laporan") }}">
                                         <i class="fas fa-table"></i>Anggota</a>
                                 </li>
                             </ul>
@@ -210,12 +204,12 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <a class="js-arrow" href="#">
+                            <li class="{{ (request()->is("buku*")) ? 'active' : '' }}">
+                                <a class="js-arrow" href="{{ route("buku.index") }}">
                                     <i class="fas fa-book"></i>Buku</a>
                             </li>
                             <li class="has-sub">
-                                <a class="js-arrow" href="#">
+                                <a class="js-arrow" href="{{ route("anggota.laporan") }}">
                                     <i class="fas fa-file-alt"></i>Laporan
                                     <span class="arrow">
                                         <i class="fas fa-angle-down"></i>
@@ -270,6 +264,19 @@
         <!-- END BREADCRUMB-->
 
         @yield('content')
+        
+        {{-- Footer --}}
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>Copyright © 2019 Fall. All rights reserved <a href="https://andriawan24.github.io">Team Naufal Fawwaz & Nur Iman</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- vendors JS -->
@@ -287,6 +294,7 @@
     <script src="{{ asset("vendors/perfect-scrollbar/perfect-scrollbar.js") }}"></script>
     <script src="{{ asset("vendors/chartjs/Chart.bundle.min.js") }}"></script>
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset("vendors/popper/popper.min.js") }}"></script>
 
     <!-- Main JS-->
     <script src="{{ asset("js/main.js") }}"></script>
